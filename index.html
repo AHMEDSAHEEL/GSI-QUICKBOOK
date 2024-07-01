@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Signup</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Faster+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-VbGZbU9fKSDrgm9aO6gA7wT12a3bdIvz2K1xaXG7grL3G0ldS6sMAB//Xthh1aodhz7Z+GZ5Ee1YDxeAe0LjiA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+    <main class="main-container">
+        <section class="form-container">
+            <div class="form-slide">
+                <form id="login-form" class="form">
+                    <h1>Login</h1>
+                    <label for="login-email"><i class="fas fa-envelope"></i> Email</label>
+                    <input type="email" id="login-email" required>
+                    <label for="login-password"><i class="fas fa-lock"></i> Password</label>
+                    <input type="password" id="login-password" name="password" required>
+                    <button type="submit">Login</button>
+                    <span id="Forgot-pass" onclick="alert('Still in progress')">Forgot Password?</span>
+                    <p> Don't have an Account? <span style="color: red;" onclick="showSignup()">Sign Up</span></p>
+                </form>
+
+                <form id="signup-form" class="form">
+                    <h1>Signup</h1>
+                    <label for="signup-username">Username</label>
+                    <input type="text" id="signup-username" required>
+                    <label for="signup-email"><i class="fas fa-envelope"></i> Email</label>
+                    <input type="email" id="signup-email" required>
+                    <label for="signup-password"><i class="fas fa-lock"></i> Password</label>
+                    <input type="password" id="signup-password" required>
+                    <button type="submit">Signup</button>
+                    <p> Already have Account? <span style="color: red;" onclick="showLogin()">Login</span></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="/js/index.js"></script>
+</body>
+</html>
+
+
+
+<!--  
+todo 
+  1.forgot passwor
+  2.form validation
+   -->
