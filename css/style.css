@@ -30,7 +30,7 @@ body {
     transition: transform 0.5s ease;
     width: 200%;
     position: relative;
-    right: 2.1%;
+    left: 0;
     outline: 0;
     border: 0;
 }
@@ -93,12 +93,13 @@ form button {
     letter-spacing: 0.1em;
     font-size: 1.1em;
 }
-#signup-form button{
+/* #signup-form button{
     margin-left: 1rem;
-}
+} */
 
 #Forgot-pass {
     margin-top: 1.5rem;
+
     color: red;
     align-self: center;
 }
