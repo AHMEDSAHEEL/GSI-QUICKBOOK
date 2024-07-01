@@ -8,9 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Faster+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-VbGZbU9fKSDrgm9aO6gA7wT12a3bdIvz2K1xaXG7grL3G0ldS6sMAB//Xthh1aodhz7Z+GZ5Ee1YDxeAe0LjiA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <main class="main-container">
@@ -18,10 +16,14 @@
             <div class="form-slide">
                 <form id="login-form" class="form">
                     <h1>Login</h1>
-                    <label for="login-email"><i class="fas fa-envelope"></i> Email</label>
-                    <input type="email" id="login-email" required>
-                    <label for="login-password"><i class="fas fa-lock"></i> Password</label>
-                    <input type="password" id="login-password" name="password" required>
+                    <div class="input-container">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="login-email" placeholder="Email" required>
+                    </div>
+                    <div class="input-container">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="login-password" placeholder="Password" required>
+                    </div>
                     <button type="submit">Login</button>
                     <span id="Forgot-pass" onclick="alert('Still in progress')">Forgot Password?</span>
                     <p> Don't have an Account? <span style="color: red;" onclick="showSignup()">Sign Up</span></p>
@@ -29,27 +31,38 @@
 
                 <form id="signup-form" class="form">
                     <h1>Signup</h1>
-                    <label for="signup-username">Username</label>
-                    <input type="text" id="signup-username" required>
-                    <label for="signup-email"><i class="fas fa-envelope"></i> Email</label>
-                    <input type="email" id="signup-email" required>
-                    <label for="signup-password"><i class="fas fa-lock"></i> Password</label>
-                    <input type="password" id="signup-password" required>
+                    <div class="input-container">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="signup-username" placeholder="Username" required>
+                    </div>
+                    <div class="input-container">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="signup-email" placeholder="Email" required>
+                    </div>
+                    <div class="input-container">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="signup-password" placeholder="Password" required>
+                    </div>
+                    <div class="input-container">
+                        <i class="fas fa-phone"></i>
+                        <input type="tel" id="signup-phone" placeholder="Phone Number" required>
+                    </div>
+                    <div class="input-container">
+                        <label for="signup-gender" class="sr-only">Gender</label>
+                        <i class="fas fa-venus-mars"></i>
+                        <select style="width: 100%;font-family: 'Roboto' 'Nunito', 'Arial', sans-serif;" id="signup-gender" required>
+                            <option value="" disabled selected>Select your gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
                     <button type="submit">Signup</button>
-                    <p> Already have Account? <span style="color: red;" onclick="showLogin()">Login</span></p>
+                    <p>&nbsp; Already have Account? <span style="color: red;" onclick="showLogin()">Login</span></p>
                 </form>
             </div>
         </section>
     </main>
-
     <script src="js/index.js"></script>
 </body>
 </html>
-
-
-
-<!--  
-todo 
-  1.forgot passwor
-  2.form validation
-   -->
