@@ -14,7 +14,7 @@
     <main class="main-container">
         <section class="form-container">
             <div class="form-slide">
-                <form id="login-form" class="form">
+                <form id="login-form" class="form"  onsubmit="return validateLoginForm()">
                     <h1>Login</h1>
                     <div class="input-container">
                         <i class="fas fa-envelope"></i>
@@ -29,7 +29,7 @@
                     <p> Don't have an Account? <span style="color: red;" onclick="showSignup()">Sign Up</span></p>
                 </form>
 
-                <form id="signup-form" class="form">
+                <form id="signup-form" class="form" onsubmit="return validateSignupForm()">
                     <h1>Signup</h1>
                     <div class="input-container">
                         <i class="fas fa-user"></i>
@@ -43,19 +43,20 @@
                         <i class="fas fa-lock"></i>
                         <input type="password" id="signup-password" placeholder="Password" required>
                     </div>
-                    <div class="input-container">
-                        <i class="fas fa-phone"></i>
-                        <input type="tel" id="signup-phone" placeholder="Phone Number" required>
-                    </div>
+                   
                     <div class="input-container">
                         <label for="signup-gender" class="sr-only">Gender</label>
                         <i class="fas fa-venus-mars"></i>
-                        <select style="width: 100%;font-family: 'Roboto' 'Nunito', 'Arial', sans-serif;" id="signup-gender" required>
+                        <select style="font-family: 'Roboto' 'Nunito', 'Arial', sans-serif;" id="signup-gender" required>
                             <option value="" disabled selected>Select your gender</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                             <option value="other">Other</option>
                         </select>
+                    </div>
+                    <div class="input-container">
+                        <i class="fas fa-phone"></i>
+                        <input type="tel" id="signup-phone" placeholder="Phone Number" required>
                     </div>
                     <button type="submit">Signup</button>
                     <p>&nbsp; Already have Account? <span style="color: red;" onclick="showLogin()">Login</span></p>
@@ -66,3 +67,7 @@
     <script src="js/index.js"></script>
 </body>
 </html>
+
+<!-- TODO:
+   1.database
+    -->
