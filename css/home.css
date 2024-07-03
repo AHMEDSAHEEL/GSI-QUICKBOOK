@@ -3,7 +3,6 @@
     padding: 0;
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
-
 }
 
 .container {
@@ -30,9 +29,12 @@ nav {
 
 nav ul {
     list-style: none;
-    width: 100%;
+    display: flex;
+    align-items: center;
     text-align: right;
     padding-right: 60px;
+    transition: max-height 0.5s ease-in-out;
+    overflow: hidden;
 }
 
 nav ul li {
@@ -43,6 +45,14 @@ nav ul li {
 nav ul li a {
     color: #fff;
     text-decoration: none;
+}
+
+.hamburger {
+    display: none; /* Initially hidden */
+    cursor: pointer;
+    color: #fff;
+    font-size: 24px;
+    padding-right: 20px;
 }
 
 .btn {
@@ -56,6 +66,7 @@ nav ul li a {
     color: #fff;
     font-weight: 500;
     cursor: pointer;
+    transition: background 0.3s ease;
 }
 
 .btn img {
@@ -63,18 +74,21 @@ nav ul li a {
     margin-right: 10px;
 }
 
-.content{
+.content {
     margin-top: 14%;
     color: #fff;
     max-width: 620px;
 }
-.content h1{
+
+.content h1 {
     font-size: 70px;
     font-weight: 600;
     line-height: 85px;
     margin-bottom: 25px;
+    transition: font-size 0.3s ease, line-height 0.3s ease;
 }
-.content form{
+
+.content form {
     display: flex;
     align-items: center;
     background: #fff;
@@ -82,18 +96,62 @@ nav ul li a {
     padding: 10px;
     margin-top: 30px;
 }
-.content form input{
+
+.content form input {
     border: 0;
     outline: 0;
     width: 100%;
     font-size: 16px;
     padding-left: 10px;
 }
-.content form .btn{
+
+.content form .btn {
     font-size: 15px;
     padding: 10px 30px;
 }
-/*media queries */
-@media (max-width: 600px) {
 
+/* Media queries */
+@media (max-width: 910px) {
+    nav ul {
+        display: none; /* Hide navigation links */
+    }
+    nav ul.active {
+        display: block; /* Show navigation links when active */
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        background: rgba(9, 0, 77, 0.9);
+        border-radius: 5px;
+        padding: 10px;
+        z-index: 1000;
+    }
+    .hamburger {
+        display: block; /* Show hamburger menu */
+    }
+    .logo {
+        width: 140px;
+    }
+    .content h1 {
+        font-size: 3rem;
+        font-weight: 600;
+        line-height: 45px;
+        margin-bottom: 25px;
+    }
+}
+
+nav ul.active li {
+    display: block;
+    margin: 10px 0;
+    text-align: right;
+}
+
+nav ul.active li a {
+    color: #fff;
+}
+
+/* Include the button in the dropdown menu */
+nav ul.active .dropdown-btn {
+    display: block;
+    margin: 10px 0;
+    text-align: right;
 }
