@@ -38,6 +38,7 @@ function validateLoginForm(event) {
     
         const successMessage = document.getElementById('success');
         successMessage.textContent = 'Login Successfully ✅';
+        window.location.href = "home.html";
         successMessage.classList.add('success-message');
     
         setTimeout(() => {
@@ -75,8 +76,7 @@ function validateSignupForm(event) {
            
             usserErr.textContent='Username must have at least 6 character';
             spinner.style.display = 'none'; 
-            document.querySelector('.error-1').style.marginTop='-0.2rem';
-           
+            document.querySelector('.error-1').style.marginTop='-0.2rem';   
             return false;
         }
 
