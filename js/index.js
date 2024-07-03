@@ -40,6 +40,9 @@ function validateLoginForm(event) {
         successMessage.textContent = 'Login Successfully ✅';
         window.location.href = "home.html";
         successMessage.classList.add('success-message');
+        
+        document.getElementById('login-email').value='';
+        document.getElementById('login-password').value='';
     
         setTimeout(() => {
             successMessage.classList.remove('success-message');
@@ -90,7 +93,7 @@ function validateSignupForm(event) {
         if (password.length < 8 || !validatePasswordComplexity(password)) {
             passErr.textContent='Password must have 8 characters and contains at least 1 uppercase letter, 1 lowercase letter, 1 digit, and 1 special character.';
             spinner.style.display = 'none'; 
-            document.querySelector('.error-3').style.marginTop='-1.2rem';
+            document.querySelector('.error-3').style.marginTop='-1rem';
             return false;
         }
 
@@ -111,11 +114,18 @@ function validateSignupForm(event) {
         document.querySelector(".error-3").style.marginTop='0.2rem';
         document.querySelector(".error-4").style.marginTop='0.2rem';
         successMessage.classList.add('success-message');
-    
+        document.getElementById('signup-username').value='';
+        document.getElementById('signup-email').value='';
+        document.getElementById('signup-password').value='';
+        document.getElementById('signup-phone').value='';
+        document.getElementById('signup-gender').value='';
+       
         setTimeout(() => {
             successMessage.classList.remove('success-message');
             successMessage.textContent = '';
-        }, 3000);
+            const formSlide = document.querySelector('.form-slide');
+            formSlide.style.transform = 'translateX(0%)';
+        }, 2000);
     
     }, 1000);
 }

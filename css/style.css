@@ -118,12 +118,13 @@ select{
 #Forgot-pass {
     margin-top: 1.5rem;
     color: red;
+    text-decoration: underline;
     align-self: center;
 }
 
 span {
     cursor: pointer;
-
+   text-decoration: underline;
 }
 p{
     margin-top: 0.5rem;
@@ -131,7 +132,7 @@ p{
 }
 .success-message {
     opacity: 0;
-    transition: opacity 4s ease-in-out;
+    transition: opacity 2s ease-in-out;
 }
 
 .spinner {
