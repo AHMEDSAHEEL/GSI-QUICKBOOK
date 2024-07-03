@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickBooks Dashboard</title>
+    <link rel="stylesheet" href="/css/dashBoard.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>QuickBooks Dashboard</h1>
+        </header>
+        <main>
+            <section class="summary">
+                <h2>Summary</h2>
+                <div class="card hidden" id="profit-loss-card">
+                    <h3>Profit and Loss</h3>
+                    <p>Total Income: <span id="total-income">$10,000</span></p>
+                    <p>Total Expenses: <span id="total-expenses">$5,000</span></p>
+                    <p>Net Profit: <span id="net-profit">$5,000</span></p>
+                </div>
+                <div class="card hidden" id="balance-sheet-card">
+                    <h3>Balance Sheet</h3>
+                    <p>Assets: <span id="assets">$20,000</span></p>
+                    <p>Liabilities: <span id="liabilities">$10,000</span></p>
+                    <p>Equity: <span id="equity">$10,000</span></p>
+                </div>
+            </section>
+            <section class="sales">
+                <h2>Sales</h2>
+                <div class="card hidden" id="invoices-card">
+                    <h3>Invoices</h3>
+                    <p>Outstanding: <span id="outstanding-invoices">$2,000</span></p>
+                    <p>Paid: <span id="paid-invoices">$8,000</span></p>
+                </div>
+                <div class="card hidden" id="sales-overview-card">
+                    <h3>Sales Overview</h3>
+                    <p>Total Sales: <span id="total-sales">$10,000</span></p>
+                    <p>Open Invoices: <span id="open-invoices">$2,000</span></p>
+                    <p>Overdue Invoices: <span id="overdue-invoices">$500</span></p>
+                </div>
+            </section>
+            <section class="expenses">
+                <h2>Expenses</h2>
+                <div class="card hidden" id="expenses-overview-card">
+                    <h3>Expense Overview</h3>
+                    <p>Total Expenses: <span id="total-expenses-overview">$5,000</span></p>
+                    <p>Recent Expenses: <span id="recent-expenses">$1,200</span></p>
+                </div>
+                <div class="card hidden" id="bills-card">
+                    <h3>Bills</h3>
+                    <p>Outstanding: <span id="outstanding-bills">$1,000</span></p>
+                    <p>Paid: <span id="paid-bills">$4,000</span></p>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="/js/dashBoard.js"></script>
+</body>
+</html>
+

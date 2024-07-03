@@ -38,7 +38,7 @@ function validateLoginForm(event) {
     
         const successMessage = document.getElementById('success');
         successMessage.textContent = 'Login Successfully ✅';
-        window.location.href = "home.html";
+        window.location.href = "html/dashBoard.html";
         successMessage.classList.add('success-message');
         
         document.getElementById('login-email').value='';
