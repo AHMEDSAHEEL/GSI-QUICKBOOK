@@ -14,36 +14,43 @@
     <main class="main-container">
         <section class="form-container">
             <div class="form-slide">
-                <form id="login-form" class="form"  onsubmit="return validateLoginForm()">
+                <form id="login-form" class="form"  onsubmit="validateLoginForm(event) ">
+                    <h2 class="successfull" id="success"></h2>
                     <h1>Login</h1>
                     <div class="input-container">
                         <i class="fas fa-envelope"></i>
                         <input type="email" id="login-email" placeholder="Email" required>
                     </div>
+                    <div class="error" id="emailErr"></div>
                     <div class="input-container">
                         <i class="fas fa-lock"></i>
                         <input type="password" id="login-password" placeholder="Password" required>
                     </div>
+                    <div class="error" id="passErr"></div>
+                    <div class="spinner" id="login-spinner"></div> 
                     <button type="submit">Login</button>
                     <span id="Forgot-pass" onclick="alert('Still in progress')">Forgot Password?</span>
                     <p> Don't have an Account? <span style="color: red;" onclick="showSignup()">Sign Up</span></p>
                 </form>
 
-                <form id="signup-form" class="form" onsubmit="return validateSignupForm()">
+                <form id="signup-form" class="form" onsubmit="validateSignupForm(event)">
+                    <h2 class="successfull" id="successs"></h2>
                     <h1>Signup</h1>
                     <div class="input-container">
                         <i class="fas fa-user"></i>
                         <input type="text" id="signup-username" placeholder="Username" required>
                     </div>
+                    <div class="error error-1" id="sign-userErr"></div>
                     <div class="input-container">
                         <i class="fas fa-envelope"></i>
                         <input type="email" id="signup-email" placeholder="Email" required>
                     </div>
+                    <div class="error error-2" id="sign-emailErr"></div>
                     <div class="input-container">
                         <i class="fas fa-lock"></i>
                         <input type="password" id="signup-password" placeholder="Password" required>
                     </div>
-                   
+                    <div class="error error-3" id="sign-passErr"></div>
                     <div class="input-container">
                         <label for="signup-gender" class="sr-only">Gender</label>
                         <i class="fas fa-venus-mars"></i>
@@ -54,10 +61,13 @@
                             <option value="other">Other</option>
                         </select>
                     </div>
+                   
                     <div class="input-container">
                         <i class="fas fa-phone"></i>
-                        <input type="tel" id="signup-phone" placeholder="Phone Number" required>
+                        <input type="tel" id="signup-phone" maxlength="10" placeholder="Phone Number" required>
                     </div>
+                    <div class="error error-4" id="sign-phoneErr"></div>
+                    <div class="spinner" id="signup-spinner"></div> 
                     <button type="submit">Signup</button>
                     <p>&nbsp; Already have Account? <span style="color: red;" onclick="showLogin()">Login</span></p>
                 </form>
@@ -67,7 +77,3 @@
     <script src="js/index.js"></script>
 </body>
 </html>
-
-<!-- TODO:
-   1.database
-    -->
