@@ -106,6 +106,10 @@ function validateSignupForm(event) {
     
         const successMessage = document.getElementById('successs');
         successMessage.textContent = 'SignUp Successfully ✅';
+        document.querySelector(".error-1").style.marginTop='0.2rem';
+        document.querySelector(".error-2").style.marginTop='0.2rem';
+        document.querySelector(".error-3").style.marginTop='0.2rem';
+        document.querySelector(".error-4").style.marginTop='0.2rem';
         successMessage.classList.add('success-message');
     
         setTimeout(() => {
