@@ -9,6 +9,7 @@ body {
     width: 100%;
     margin: auto;
     overflow: hidden;
+    
 }
 
 header {
@@ -36,6 +37,7 @@ section {
     padding: 1.2rem;
     box-shadow: 0 0 10px rgba(43, 42, 42, 0.966);
     border-radius: 5px;
+    background-image: linear-gradient(rgba(134, 129, 167, 0.65), rgba(147, 143, 184, 0.65)), url(images/background.png);
 }
 
 section h2 {
@@ -78,6 +80,7 @@ section h2 {
     height: 100%; /* Full height */
     background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
     padding-top: 60px;
+  
     
 }
 
@@ -89,6 +92,7 @@ section h2 {
     width: 100%;
     border-radius: 5px;
     margin: 10px auto;
+   
     /* Center horizontally */
 }
 
