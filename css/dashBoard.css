@@ -1,4 +1,4 @@
- body {
+body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -51,6 +51,7 @@ section h2 {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.8s ease, transform 1s ease;
+    cursor: pointer;
 }
 
 .card h3 {
@@ -67,6 +68,91 @@ section h2 {
     transform: translateY(0);
 }
 
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    padding-top: 60px;
+    
+}
+
+.modal-content {
+    background-color: #fefefe;
+    padding: 3rem;
+    border: 1px solid #888;
+    max-width: 500px;
+    width: 100%;
+    border-radius: 5px;
+    margin: 10px auto;
+    /* Center horizontally */
+}
+
+
+
+.modal-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.modal-footer button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#updateBtn {
+    
+    background-color:green;
+    border: 0;
+    outline: 0;
+    float: left;
+    color: white;
+    padding: 10px;
+    width: 40%;
+    border-radius: 3px;
+}
+
+#clearBtn {
+    
+    background-color:red;
+    float: right;
+    color: white;
+    border: 0;
+    outline: 0;
+    padding: 10px;
+    width: 40%;
+    border-radius: 3px;
+}
+
+#updateBtn:hover, #clearBtn:hover {
+    opacity: 0.8;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
 @media screen and (max-width: 710px) {
     main {
         flex-direction: column;
@@ -75,5 +161,27 @@ section h2 {
 
     section {
         width: 80%;
+    }
+ 
+}
+@media screen and (max-width: 675px) {
+   
+    .modal-content {
+        max-width: 350px;
+        
+    }
+}
+@media screen and (max-width: 495px) {
+   
+    .modal-content {
+        max-width: 200px;
+        
+    }
+}
+@media screen and (max-width: 325px) {
+   
+    .modal-content {
+        max-width: 150px;
+        
     }
 }
