@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Signup</title>
+    <link rel="stylesheet" href="../css/LoginSignup.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Faster+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <main class="main-container">
+        <section class="form-container">
+            <div class="form-slide">
+                <form id="login-form" class="form"  onsubmit="validateLoginForm(event) ">
+                    <h2 class="successfull" id="success"></h2>
+                    <h1>Login</h1>
+                    <div class="input-container">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="login-email" placeholder="Email" required>
+                    </div>
+                    <div class="error" id="emailErr"></div>
+                    <div class="input-container">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="login-password" placeholder="Password" required>
+                    </div>
+                    <div class="error" id="passErr"></div>
+                    <div class="spinner" id="login-spinner"></div> 
+                    <button type="submit">Login</button>
+                    <span id="Forgot-pass" onclick="alert('Still in progress')">Forgot Password?</span>
+                    <p> Don't have an Account? <span style="color: red;" onclick="showSignup()">Sign Up</span></p>
+                </form>
+
+                <form id="signup-form" class="form" onsubmit="validateSignupForm(event)">
+                    <h2 class="successfull" id="successs"></h2>
+                    <h1>Signup</h1>
+                    <div class="input-container">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="signup-username" placeholder="Username" required>
+                    </div>
+                    <div class="error error-1" id="sign-userErr"></div>
+                    <div class="input-container">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="signup-email" placeholder="Email" required>
+                    </div>
+                    <div class="error error-2" id="sign-emailErr"></div>
+                    <div class="input-container">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="signup-password" placeholder="Password" required>
+                    </div>
+                    <div class="error error-3" id="sign-passErr"></div>
+                    <div class="input-container">
+                        <label for="signup-gender" class="sr-only">Gender</label>
+                        <i class="fas fa-venus-mars"></i>
+                        <select style="font-family: 'Roboto' 'Nunito', 'Arial', sans-serif;" id="signup-gender" required>
+                            <option value="" disabled selected>Select your gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                   
+                    <div class="input-container">
+                        <i class="fas fa-phone"></i>
+                        <input type="tel" id="signup-phone" maxlength="10" placeholder="Phone Number" required>
+                    </div>
+                    <div class="error error-4" id="sign-phoneErr"></div>
+                    <div class="spinner" id="signup-spinner"></div> 
+                    <button type="submit">Signup</button>
+                    <p>&nbsp; Already have Account? <span style="color: red;" onclick="showLogin()">Login</span></p>
+                </form>
+            </div>
+        </section>
+    </main>
+    <script src="../js/LoginSignup.js"></script>
+</body>
+</html>
