@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 items.forEach((item, index) => {
                     const span = item.querySelector('span');
                     const value = document.getElementById(`modal-input-${index}`).value;
-                    const formattedValue = '$' + value;
+                    const formattedValue = '₹' + value;
                     span.textContent = formattedValue;
                     // Store the updated value in local storage
                     localStorage.setItem(span.id, formattedValue);

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +5,8 @@
     <title>Travel Website Header</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+   
 </head>
 <body>
     <div class="container">
@@ -17,27 +18,138 @@
             <div class="X">
                 <button>X</button>
             </div>
-          
             <ul class="nav-links">
                 <li><a href="#">About</a></li>
                 <li><a href="html/LoginSignup.html">Login</a></li>
                 <li><a href="#">Contact Us</a></li>
-                <li class="dropdown-btn"><button class="btn"><img src="images/icon.png" alt="Icon">Bookings</button></li>
+                <li class="dropdown-btn">
+                    <button type="button" class="btn"><img src="images/icon.png" alt="Icon">Bookings</button>
+                </li>
             </ul>
         </nav>
         <div class="content">
             <h1>QuickBooks<br>GSI NEXT</h1>
-            <p>QuickBooks allows you to keep track of financial functions like income and expenses, employee expenses and inventory in 
-                real time and fulfill tax obligations hassle-free. When you are free of financial worries, 
-                you can focus on driving business growth and revenue.</p>
-            <form>
-                <input type="text" placeholder="Country name">
+            <p>QuickBooks allows you to keep track of financial functions like income and expenses, 
+                employee expenses and inventory in real-time and fulfill tax obligations hassle-free. 
+                When you are free of financial worries, you can focus on driving business growth and revenue.</p>
+            <form id="searchForm">
+                <h2 style="color: black; text-transform: uppercase;letter-spacing: 1px;">Turf Availability</h2>
+
+                <select id="cityInput" title="Select city">
+                    <option value="" disabled selected>City</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Kolkata">Kolkata</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Pune">Pune</option>
+                    <option value="Ahmedabad">Ahmedabad</option>
+                    <option value="Jaipur">Jaipur</option>
+                    <option value="Lucknow">Lucknow</option>
+                </select>
+                
+                <select id="timeSlotSelect" title="Select time slot">
+                    <option value="" disabled selected>Time Slot</option>
+                    <option value="morning">Morning 6am-10am</option>
+                    <option value="afternoon">Afternoon 11am-3pm</option>
+                    <option value="evening">Evening 4pm-6pm</option>
+                    <option value="evening">night 6pm-10pm</option>
+                    <option value="evening">midnight 10pm-2am</option>
+                </select>
+                
                 <button type="submit" class="btn">Search</button>
             </form>
-        </div>
+            <div id="map"></div>
+            <div class="cards-container" id="cardsContainer">
+                <!-- Cards will be dynamically added here -->
+            </div>
+        </div>    
     </div>
-    <script src="js/index.js">
-     
+    <script src="js/index.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        
+document.addEventListener('DOMContentLoaded', function () {
+    const map = L.map('map').setView([20.5937, 78.9629], 5); // Default map view for India
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+    }).addTo(map);
+
+    // Sample turfs data (replace with actual data)
+    const turfs = [
+        { name: 'Turf A', location: [20.5937, 78.9629], timeSlots: ['morning', 'afternoon'] },
+        { name: 'Turf B', location: [21.2787, 78.4675], timeSlots: ['afternoon', 'evening','night'] },
+        { name: 'Turf C', location: [19.0760, 72.8777], timeSlots: ['morning', 'evening','night','midnight'] },
+        { name: 'Turf D', location: [20.5937, 78.9629], timeSlots: ['morning', 'afternoon'] },
+        { name: 'Turf E', location: [21.2787, 78.4675], timeSlots: ['afternoon', 'evening'] },
+        { name: 'Turf F', location: [19.0760, 72.8777], timeSlots: ['morning', 'evening'] }
+        // Add more turfs as needed
+    ];
+
+    // Function to display turfs on the map
+    function displayTurfs(city, timeSlot) {
+        // Clear previous markers
+        map.eachLayer(function (layer) {
+            if (layer instanceof L.Marker) {
+                map.removeLayer(layer);
+            }
+        });
+
+        // Filter turfs based on city and time slot
+        const filteredTurfs = turfs.filter(turf => {
+            // Placeholder logic to filter by city (or state) and time slot
+            return true; // Replace with actual logic
+        });
+
+        // Add markers for filtered turfs
+        filteredTurfs.forEach(turf => {
+            const marker = L.marker(turf.location).addTo(map);
+            marker.bindPopup(`<b>${turf.name}</b><br>Time Slots: ${turf.timeSlots.join(', ')}`).openPopup();
+        });
+
+        // Clear previous cards
+        const cardContainer = document.getElementById('cardsContainer');
+        cardContainer.innerHTML = '';
+
+        // Create cards for filtered turfs
+        filteredTurfs.forEach(turf => {
+            const card = document.createElement('div');
+            card.classList.add('card');
+            card.innerHTML = `
+                <h3>${turf.name}</h3>
+                <p><strong>Time Slots:</strong> ${turf.timeSlots.join(', ')}</p>
+                <p>Distance: ${calculateDistance(city, turf.location)} km</p>
+                <p>Availability: ${checkAvailability(turf, timeSlot) ? 'Available' : 'Not Available'}</p>
+            `;
+            cardContainer.appendChild(card);
+        });
+    }
+
+    // Calculate distance between user city and turf location (dummy function for demonstration)
+    function calculateDistance(city, turfLocation) {
+        // Placeholder logic to calculate distance based on city and turfLocation
+        return Math.round(Math.random() * 20); // Replace with actual calculation
+    }
+
+    // Check availability of selected time slot for a turf (dummy function for demonstration)
+    function checkAvailability(turf, timeSlot) {
+        return turf.timeSlots.includes(timeSlot);
+    }
+
+    // Handle form submission
+    document.getElementById('searchForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent default form submission
+
+        const city = document.getElementById('cityInput').value.trim();
+        const timeSlot = document.getElementById('timeSlotSelect').value;
+
+        // Display turfs based on the selected city and time slot
+        displayTurfs(city, timeSlot);
+    });
+});
+
     </script>
 </body>
 </html>
