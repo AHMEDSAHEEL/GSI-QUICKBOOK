@@ -11,8 +11,7 @@
     background-image: linear-gradient(rgba(9, 0, 77, 0.65), rgba(9, 0, 77, 0.65)), url(images/background.png);
     background-size: cover;
     background-position: center;
-    padding: 1px ;
-
+    padding: 1px;
 }
 
 nav {
@@ -26,19 +25,20 @@ nav {
 }
 
 .logo {
-     width: 150px;
-     height: 150px;
+    width: 150px;
+    height: 150px;
     cursor: pointer;
-    
 }
 
-nav ul {
+.nav-links {
     list-style: none;
     display: flex;
     align-items: center;
     text-align: right;
     padding-right: 60px;
-    transition: max-height 0.5s ease-in-out;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateY(20px);
+    opacity: 0;
     overflow: hidden;
     text-transform: uppercase;
 }
@@ -47,14 +47,13 @@ nav ul li {
     display: inline-block;
     margin: 10px 10px;
     padding-left: 1rem;
-   
 }
 
 nav ul li a {
     color: #fff;
     text-decoration: none;
-  
 }
+
 a:hover {
     color: #f5168d;
     text-decoration: underline;
@@ -62,14 +61,25 @@ a:hover {
     transition: color 0.3s ease, text-decoration 0.3s ease, font-size 0.3s ease;
 }
 
+
 .hamburger {
-    display: none; /* Initially hidden */
+    display: none;
     cursor: pointer;
     color: #fff;
     font-size: 24px;
     padding-right: 20px;
 }
+.X{
+    display: none;
+}
+.X button{
+    padding: 5px 10px;
 
+    border-radius: 50%;
+    background: red;
+    color: #fff;
+    margin-right: 10px;
+}
 .btn {
     display: flex;
     align-items: center;
@@ -85,13 +95,13 @@ a:hover {
     text-transform: uppercase;
 }
 
-
 .btn img {
     width: 20px;
     margin-right: 10px;
 }
-.btn:hover{
-    background:linear-gradient(rgba(9, 0, 77, 0.65), rgba(9, 0, 77, 0.65)), url(images/background.png);
+
+.btn:hover {
+    background: linear-gradient(rgba(9, 0, 77, 0.65), rgba(9, 0, 77, 0.65)), url(images/background.png);
     font-size: 1.1rem;
     transition: color 0.3s ease, text-decoration 0.3s ease, font-size 0.3s ease;
 }
@@ -132,29 +142,34 @@ a:hover {
     font-size: 15px;
     padding: 10px 30px;
 }
+.nav-links.active {
+    display: block;
+    position: absolute;
+    top: 80px;
+    right: 10px;
+    background: rgba(9, 0, 77, 0.9);
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 1000;
+    transform: translateY(0);
+    opacity: 1;
+}
 
 /* Media queries */
 @media (max-width: 910px) {
-    nav ul {
-        display: none; /* Hide navigation links */
+    .nav-links {
+        display: none;
     }
-    nav ul.active {
-        display: block; /* Show navigation links when active */
-        position: absolute;
-        top: 80px;
-        right: 10px;
-        background: rgba(9, 0, 77, 0.9);
-        border-radius: 5px;
-        padding: 10px;
-        z-index: 1000;
+    .nav-links.active {
+        display: block;
     }
     .hamburger {
         display: block; /* Show hamburger menu */
     }
     .logo {
-    /* Adjust logo width to fit better with hamburger menu */
-    width: 100px;
-    height: 100px;
+        /* Adjust logo width to fit better with hamburger menu */
+        width: 100px;
+        height: 100px;
     }
     .content h1 {
         font-size: 2rem;

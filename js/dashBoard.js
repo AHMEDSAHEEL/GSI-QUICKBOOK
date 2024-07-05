@@ -1,3 +1,19 @@
+document.addEventListener('DOMContentLoaded', function () {
+    // get stored values from local storage
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        const items = card.querySelectorAll('p');
+        items.forEach((item, index) => {
+            const spanId = item.querySelector('span').id;
+            const storedValue = localStorage.getItem(spanId);
+            console.log(storedValue);
+            if (storedValue) {
+                item.querySelector('span').textContent = storedValue;
+            }
+            
+        });
+    });
+
     function addTimedAnimation() {
         const cards = document.querySelectorAll('.card.hidden');
         cards.forEach((card, index) => {
@@ -16,7 +32,7 @@
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.5 });
 
         cards.forEach(card => {
             observer.observe(card);
@@ -37,8 +53,7 @@
         }
     });
 
-// form:
-
+    // Modal functionality
     const modal = document.getElementById('myModal');
     const modalTitle = document.getElementById('modal-title');
     const modalForm = document.getElementById('modal-form');
@@ -50,13 +65,11 @@
             currentCard = card;
             modalTitle.textContent = card.querySelector('h3').textContent;
             modalForm.innerHTML = '';
-            let spanId=null;
+            let spanId = null;
             const items = card.querySelectorAll('p');
             items.forEach((item, index) => {
                 const label = item.textContent.split(':')[0];
-                // console.log(label)
                 spanId = item.querySelector('span').id;
-                console.log(spanId)
 
                 const formGroup = document.createElement('div');
                 formGroup.classList.add('form-group');
@@ -64,10 +77,10 @@
                 const inputLabel = document.createElement('label');
                 inputLabel.setAttribute('for', `modal-input-${index}`);
                 inputLabel.textContent = label;
-                
+
                 const inputField = document.createElement('input');
                 inputField.type = 'number';
-                inputField.id = `modal-input-${index}`;              
+                inputField.id = `modal-input-${index}`;
                 inputField.required = true;
 
                 formGroup.appendChild(inputLabel);
@@ -88,22 +101,20 @@
             clearBtn.classList.add('btn');
             clearBtn.textContent = 'Clear';
             modalForm.appendChild(clearBtn);
-            
-            
 
             updateBtn.addEventListener('click', function () {
-
                 const items = card.querySelectorAll('p');
                 items.forEach((item, index) => {
-                    spanId = item.querySelector('span');
+                    const span = item.querySelector('span');
                     const value = document.getElementById(`modal-input-${index}`).value;
-                    spanId.textContent='$'+value;
-                    console.log(value)
-                 });
+                    const formattedValue = '$' + value;
+                    span.textContent = formattedValue;
+                    // Store the updated value in local storage
+                    localStorage.setItem(span.id, formattedValue);
+                });
                 modal.style.display = 'none';
             });
 
-            
             clearBtn.addEventListener('click', function () {
                 const inputs = modalForm.querySelectorAll('input');
                 inputs.forEach(input => {
@@ -124,3 +135,4 @@
             modal.style.display = 'none';
         }
     });
+});
