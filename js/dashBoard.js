@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
         items.forEach((item, index) => {
             const spanId = item.querySelector('span').id;
             const storedValue = localStorage.getItem(spanId);
-            console.log(storedValue);
             if (storedValue) {
                 item.querySelector('span').textContent = storedValue;
             }

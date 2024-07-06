@@ -34,23 +34,12 @@ document.addEventListener('DOMContentLoaded', function () {
         maxZoom: 19,
     }).addTo(map);
 
-    // Sample turfs data with 50 turfs (replace with actual data)
+    
     const turfs = [
-        // Maharashtra
-        { name: 'Turf Mumbai A', location: [19.0760, 72.8777], city: 'Mumbai', state: 'Maharashtra', locationPlace: { name: 'Worli', coordinates: [19.0144, 72.8162] }, distance: 8, timeSlots: ['morning', 'night', 'afternoon'] },
-        { name: 'Turf Mumbai B', location: [19.0760, 72.8777], city: 'Mumbai', state: 'Maharashtra', locationPlace: { name: 'Juhu', coordinates: [19.0975, 72.8265] }, distance: 12, timeSlots: ['afternoon', 'evening'] },
-        { name: 'Turf Pune A', location: [18.5204, 73.8567], city: 'Pune', state: 'Maharashtra', locationPlace: { name: 'Kothrud', coordinates: [18.5039, 73.8077] }, distance: 10, timeSlots: ['evening', 'morning', 'midnight'] },
-        { name: 'Turf Pune B', location: [18.5204, 73.8567], city: 'Pune', state: 'Maharashtra', locationPlace: { name: 'Hinjawadi', coordinates: [18.5915, 73.7388] }, distance: 15, timeSlots: ['night', 'afternoon', 'morning', 'evening'] },
-        { name: 'Turf Nagpur A', location: [21.1458, 79.0882], city: 'Nagpur', state: 'Maharashtra', locationPlace: { name: 'Dharampeth', coordinates: [21.1330, 79.0636] }, distance: 8, timeSlots: ['morning', 'afternoon', 'evening'] },
-        { name: 'Turf Nagpur B', location: [21.1458, 79.0882], city: 'Nagpur', state: 'Maharashtra', locationPlace: { name: 'Sadar', coordinates: [21.1522, 79.0878] }, distance: 12, timeSlots: ['afternoon', 'evening', 'night', 'midnight'] },
-        { name: 'Turf Nashik A', location: [19.9975, 73.7898], city: 'Nashik', state: 'Maharashtra', locationPlace: { name: 'College Road', coordinates: [19.9986, 73.7895] }, distance: 6, timeSlots: ['evening', 'night', 'morning'] },
-        { name: 'Turf Nashik B', location: [19.9975, 73.7898], city: 'Nashik', state: 'Maharashtra', locationPlace: { name: 'Indira Nagar', coordinates: [20.0119, 73.7728] }, distance: 10, timeSlots: ['night', 'morning'] },
-        { name: 'Turf Aurangabad A', location: [19.8762, 75.3433], city: 'Aurangabad', state: 'Maharashtra', locationPlace: { name: 'Garkheda', coordinates: [19.8880, 75.3409] }, distance: 7, timeSlots: ['morning', 'afternoon', 'evening'] },
-        { name: 'Turf Aurangabad B', location: [19.8762, 75.3433], city: 'Aurangabad', state: 'Maharashtra', locationPlace: { name: 'Cidco', coordinates: [19.8956, 75.3584] }, distance: 11, timeSlots: ['afternoon', 'evening', 'night', 'midnight'] },
 
         // Tamil Nadu
         { name: 'Turf Chennai A', location: [13.0827, 80.2707], city: 'Chennai', state: 'Tamil Nadu', locationPlace: { name: 'Anna Nagar', coordinates: [13.0837, 80.2100] }, distance: 5, timeSlots: ['morning', 'night'] },
-        { name: 'Turf Chennai B', location: [13.0827, 80.2707], city: 'Chennai', state: 'Tamil Nadu', locationPlace: { name: 'T Nagar', coordinates: [13.0348, 80.2487] }, distance: 9, timeSlots: ['afternoon', 'evening', 'midnight'] },
+        { name: 'Turf Chennai B', location: [13.0827, 80.2707], city: 'Chennai', state: 'Tamil Nadu', locationPlace: { name: 'T Nagar', coordinates: [13.0348, 80.2487] }, distance: 9, timeSlots: ['afternoon', 'evening', 'midnight']},
         { name: 'Turf Coimbatore A', location: [11.0168, 76.9558], city: 'Coimbatore', state: 'Tamil Nadu', locationPlace: { name: 'Gandhipuram', coordinates: [11.0183, 76.9746] }, distance: 6, timeSlots: ['morning', 'night'] },
         { name: 'Turf Coimbatore B', location: [11.0168, 76.9558], city: 'Coimbatore', state: 'Tamil Nadu', locationPlace: { name: 'RS Puram', coordinates: [11.0052, 76.9665] }, distance: 10, timeSlots: ['afternoon', 'evening'] },
         { name: 'Turf Madurai A', location: [9.9252, 78.1198], city: 'Madurai', state: 'Tamil Nadu', locationPlace: { name: 'Anna Nagar', coordinates: [9.9001, 78.0990] }, distance: 7, timeSlots: ['evening', 'night'] },
@@ -63,7 +52,17 @@ document.addEventListener('DOMContentLoaded', function () {
         { name: 'Victory Sports Turf', location: [8.1792, 77.4354], city: 'Nagercoil', state: 'Tamil Nadu', locationPlace: { name: 'Kottar', coordinates: [8.1806, 77.4462] }, distance: 4, timeSlots: ['morning', 'evening'] },
         { name: 'Star Turf', location: [8.1822, 77.4304], city: 'Nagercoil', state: 'Tamil Nadu', locationPlace: { name: 'Vadasery', coordinates: [8.1741, 77.4264] }, distance: 3, timeSlots: ['morning', 'afternoon'] },
 
-        // Karnataka
+        //Maharatra
+        { name: 'Turf Mumbai A', location: [19.0760, 72.8777], city: 'Mumbai', state: 'Maharashtra', locationPlace: { name: 'Worli', coordinates: [19.0144, 72.8162] }, distance: 8, timeSlots: ['morning', 'night', 'afternoon'] },
+        { name: 'Turf Mumbai B', location: [19.0760, 72.8777], city: 'Mumbai', state: 'Maharashtra', locationPlace: { name: 'Juhu', coordinates: [19.0975, 72.8265] }, distance: 12, timeSlots: ['afternoon', 'evening'] },
+        { name: 'Turf Pune A', location: [18.5204, 73.8567], city: 'Pune', state: 'Maharashtra', locationPlace: { name: 'Kothrud', coordinates: [18.5039, 73.8077] }, distance: 10, timeSlots: ['evening', 'morning', 'midnight'] },
+        { name: 'Turf Pune B', location: [18.5204, 73.8567], city: 'Pune', state: 'Maharashtra', locationPlace: { name: 'Hinjawadi', coordinates: [18.5915, 73.7388] }, distance: 15, timeSlots: ['night', 'afternoon', 'morning', 'evening'] },
+        { name: 'Turf Nagpur A', location: [21.1458, 79.0882], city: 'Nagpur', state: 'Maharashtra', locationPlace: { name: 'Dharampeth', coordinates: [21.1330, 79.0636] }, distance: 8, timeSlots: ['morning', 'afternoon', 'evening'] },
+        { name: 'Turf Nagpur B', location: [21.1458, 79.0882], city: 'Nagpur', state: 'Maharashtra', locationPlace: { name: 'Sadar', coordinates: [21.1522, 79.0878] }, distance: 12, timeSlots: ['afternoon', 'evening', 'night', 'midnight'] },
+        { name: 'Turf Nashik A', location: [19.9975, 73.7898], city: 'Nashik', state: 'Maharashtra', locationPlace: { name: 'College Road', coordinates: [19.9986, 73.7895] }, distance: 6, timeSlots: ['evening', 'night', 'morning'] },
+        { name: 'Turf Nashik B', location: [19.9975, 73.7898], city: 'Nashik', state: 'Maharashtra', locationPlace: { name: 'Indira Nagar', coordinates: [20.0119, 73.7728] }, distance: 10, timeSlots: ['night', 'morning'] },
+        { name: 'Turf Aurangabad A', location: [19.8762, 75.3433], city: 'Aurangabad', state: 'Maharashtra', locationPlace: { name: 'Garkheda', coordinates: [19.8880, 75.3409] }, distance: 7, timeSlots: ['morning', 'afternoon', 'evening'] },
+        { name: 'Turf Aurangabad B', location: [19.8762, 75.3433], city: 'Aurangabad', state: 'Maharashtra', locationPlace: { name: 'Cidco', coordinates: [19.8956, 75.3584] }, distance: 11, timeSlots: ['afternoon', 'evening', 'night', 'midnight'] },// Karnataka
         { name: 'Turf Bangalore A', location: [12.9716, 77.5946], city: 'Bangalore', state: 'Karnataka', locationPlace: { name: 'Indiranagar', coordinates: [12.9733, 77.6405] }, distance: 7, timeSlots: ['morning', 'afternoon', 'evening'] },
         { name: 'Turf Bangalore B', location: [12.9716, 77.5946], city: 'Bangalore', state: 'Karnataka', locationPlace: { name: 'Koramangala', coordinates: [12.9352, 77.6245] }, distance: 11, timeSlots: ['afternoon', 'evening', 'night'] },
         { name: 'Turf Mysore A', location: [12.2958, 76.6394], city: 'Mysore', state: 'Karnataka', locationPlace: { name: 'Vijayanagar', coordinates: [12.3078, 76.6586] }, distance: 8, timeSlots: ['morning', 'night', 'midnight'] },
@@ -318,85 +317,86 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log(turf.city)
     })
 
-    // Haversine formula to calculate distance
-    function calculateDistance(cityCoords, locationPlaceCoords) {
-        const toRad = x => (x * Math.PI) / 180;
+   // Haversine formula to calculate distance
+function calculateDistance(cityCoords, locationPlaceCoords) {
+    const toRad = x => (x * Math.PI) / 180;
 
-        const lat1 = cityCoords[0];
-        const lon1 = cityCoords[1];
-        const lat2 = locationPlaceCoords[0];
-        const lon2 = locationPlaceCoords[1];
+    const lat1 = cityCoords[0];
+    const lon1 = cityCoords[1];
+    const lat2 = locationPlaceCoords[0];
+    const lon2 = locationPlaceCoords[1];
 
-        const R = 6371; // Earth’s mean radius in km
-        const dLat = toRad(lat2 - lat1);
-        const dLong = toRad(lon2 - lon1);
+    const R = 6371; // Earth’s mean radius in km
+    const dLat = toRad(lat2 - lat1);
+    const dLong = toRad(lon2 - lon1);
 
-        const a =
-            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-            Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLong / 2) * Math.sin(dLong / 2);
+    const a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLong / 2) * Math.sin(dLong / 2);
 
-        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
-        const d = R * c;
+    const d = R * c;
 
-        return Math.round(d); // Round to the nearest kilometer
-    }
+    return d.toFixed(2); // Round to the nearest kilometer
+}
 
-    // Function to display turfs on the map
-    function displayTurfs(city, timeSlot) {
-        // Find the state of the selected city
-        const selectedTurf = turfs.find(turf => turf.city === city);
-        if (!selectedTurf) return; // Exit if city not found
+// Function to display turfs on the map and create cards
+function displayTurfs(city, timeSlot) {
+    // Find the state of the selected city
+    const selectedTurf = turfs.find(turf => turf.city === city);
+    if (!selectedTurf) return; // Exit if city not found
 
-        const selectedState = selectedTurf.state;
+    const selectedState = selectedTurf.state;
 
-        // Clear previous markers
-        map.eachLayer(function (layer) {
-            if (layer instanceof L.Marker) {
-                map.removeLayer(layer);
-            }
-        });
+    // Clear previous markers
+    map.eachLayer(function (layer) {
+        if (layer instanceof L.Marker) {
+            map.removeLayer(layer);
+        }
+    });
 
-        // Filter turfs based on state and available time slots
-        const filteredTurfs = turfs.filter(turf => turf.city === city && turf.timeSlots.includes(timeSlot));
+    // Filter turfs based on state and available time slots
+    const filteredTurfs = turfs.filter(turf => turf.city === city && turf.timeSlots.includes(timeSlot));
 
-        // Add markers for filtered turfs
-        filteredTurfs.forEach(turf => {
-            const marker = L.marker(turf.location).addTo(map);
-            marker.bindPopup(`<b>${turf.name}</b><br>Time Slots: ${turf.timeSlots.join(', ')}`).openPopup();
-        });
+    // Add markers for filtered turfs on the map
+    filteredTurfs.forEach(turf => {
+        const marker = L.marker(turf.locationPlace.coordinates).addTo(map);
+        marker.bindPopup(`<b>${turf.name}</b><br>Time Slots: ${turf.timeSlots.join(', ')}`).openPopup();
+    });
 
-        // Clear previous cards
-        const cardContainer = document.getElementById('cardsContainer');
-        cardContainer.innerHTML = '';
+    // Clear previous cards
+    const cardContainer = document.getElementById('cardsContainer');
+    cardContainer.innerHTML = '';
 
-        // Get city coordinates (for demonstration, using predefined coordinates for the selected city)
-        const cityCoordinates = selectedTurf.location;
+    // Get city coordinates (for demonstration, using predefined coordinates for the selected city)
+    const cityCoordinates = selectedTurf.locationPlace.coordinates;
 
-        // Create cards for filtered turfs
-        filteredTurfs.forEach(turf => {
-            const distance = calculateDistance(cityCoordinates, turf.locationPlace.coordinates); // Pass locationPlace instead of location
-            const card = document.createElement('div');
-            card.classList.add('card');
-            card.innerHTML = `
+    // Create cards for filtered turfs
+    filteredTurfs.forEach(turf => {
+        const distance = calculateDistance(cityCoordinates, turf.locationPlace.coordinates);
+        const card = document.createElement('div');
+        card.classList.add('card');
+        card.innerHTML = `
             <h3>${turf.name}</h3>
             <p><strong>Time Slots:</strong> ${turf.timeSlots.join(', ')}</p>
+            <p>Place: ${turf.locationPlace.name}</p>
             <p>Distance: ${distance} km</p>
             <p>Availability: Available</p>
-            <button> BOOK </button>
+            <button id="but" onclick="handlePayment('${turf.name}', ${turf.price})">BOOK</button>
         `;
-            cardContainer.appendChild(card);
-        });
-    }
-
-    // Handle form submission
-    document.getElementById('searchForm').addEventListener('submit', function (event) {
-        event.preventDefault(); // Prevent default form submission
-
-        const city = document.getElementById('cityInput').value.trim();
-        const timeSlot = document.getElementById('timeSlotSelect').value;
-
-        // Display turfs based on the selected city and time slot
-        displayTurfs(city, timeSlot);
+        cardContainer.appendChild(card);
     });
+}
+
+// Handle form submission
+document.getElementById('searchForm').addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent default form submission
+
+    const city = document.getElementById('cityInput').value.trim();
+    const timeSlot = document.getElementById('timeSlotSelect').value;
+
+    // Display turfs based on the selected city and time slot
+    displayTurfs(city, timeSlot);
+});
 });
