@@ -99,9 +99,17 @@
                    
                     <div class="input-container">
                         <i class="fas fa-phone"></i>
-                        <input type="tel" id="signup-phone" maxlength="10" placeholder="Phone Number" required>
+                        <input type="tel" id="signup-phone" maxlength="15" placeholder="+91" required>
                     </div>
                     <div class="error error-4" id="sign-phoneErr"></div>
+                    <button type="button" id="sendOT" onclick="sendOTP()" >Send OTP</button>
+                    <div id="recaptcha-container"></div>
+                    <div id="otp-section" style="display: none; margin-top: 10px;"  >
+                        <input type="text" id="signup-otp" placeholder="Enter OTP" required>
+                        <button type="button" onclick="verifyOTP()">Verify OTP</button>
+                    </div>
+                    <div class="error error-5" id="sign-otpErr"></div>
+                    
                     <div class="spinner" id="signup-spinner"></div> 
                     <button type="submit">Signup</button>
                     <p>&nbsp; Already have Account? <span style="color: red;" onclick="showLogin()">Login</span></p>
