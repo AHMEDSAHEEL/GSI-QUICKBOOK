@@ -15,6 +15,8 @@
     <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore-compat.js"></script>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css" />
+
     <style>
         .dialog {
             position: fixed;
@@ -60,6 +62,7 @@
                     <div class="input-container">
                         <i class="fas fa-lock"></i>
                         <input type="password" id="login-password" placeholder="Password" required>
+                        <i class="far fa-eye" id="toggle-login-password"  onclick="togglePasswordVisibility('login-password', 'toggle-login-password')"></i>
                     </div>
                     <div class="error" id="passErr"></div>
                     <div class="spinner" id="login-spinner"></div> 
@@ -84,6 +87,7 @@
                     <div class="input-container">
                         <i class="fas fa-lock"></i>
                         <input type="password" id="signup-password" placeholder="Password" required>
+                        <i class="far fa-eye" id="toggle-login-password" style="margin-right: 0;" onclick="togglePasswordVisibility('signup-password', 'toggle-login-password')"></i>
                     </div>
                     <div class="error error-3" id="sign-passErr"></div>
                     <div class="input-container">
@@ -98,8 +102,8 @@
                     </div>
                    
                     <div class="input-container">
-                        <i class="fas fa-phone"></i>
-                        <input type="tel" id="signup-phone" maxlength="15" placeholder="+91" required>
+                        
+                        <input type="tel" id="signup-phone" maxlength="15"  required>
                     </div>
                     <div class="error error-4" id="sign-phoneErr"></div>
                     <button type="button" id="sendOT" onclick="sendOTP()" >Send OTP</button>
@@ -132,7 +136,30 @@
             <button type="button" onclick="hideForgotPassword()">Close</button>
         </form>
     </div>
-    
-    <script src="../js/LoginSignup.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/intlTelInput.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/utils.js"></script>
+  
+    <script>
+    const phoneInputField = document.querySelector("#signup-phone");
+    const phoneInput = window.intlTelInput(phoneInputField, {
+        initialCountry: "auto",
+        geoIpLookup: function(callback) {
+            fetch('https://ipapi.co/json/')
+                .then(response => response.json())
+                .then(data => callback(data.country_code.toLowerCase()))
+                .catch(() => callback('us'));
+        },
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/utils.js"
+    });
+
+    // Add event listener to format the phone number with country code
+    phoneInputField.addEventListener('countrychange', function() {
+        const selectedCountryData = phoneInput.getSelectedCountryData();
+        phoneInputField.value = "+" + selectedCountryData.dialCode;
+    });
+    </script>
+      
+      <script src="../js/LoginSignup.js"></script>
 </body>
 </html>
