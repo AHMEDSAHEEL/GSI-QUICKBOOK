@@ -59,7 +59,7 @@ function validateLoginForm(event) {
             spinner.style.display = 'none';
             successMessage.textContent = 'Login Successfully ✅';
             successMessage.classList.add('success-message');
-            window.location.href = "../html/dashBoard.html"; // Redirect to dashboard or desired page
+            window.location.href = "../html/profile.html"; // Redirect to dashboard or desired page
 
             // Clear input fields
             document.getElementById('login-email').value = '';
@@ -171,8 +171,11 @@ function sendOTP() {
 
     if (!appVerifier) {
         appVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
-        
+    } else {
+        appVerifier.clear();
+        appVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
     }
+
 
     auth.signInWithPhoneNumber(phoneNumber, appVerifier)
         .then((confirmationResult) => {
