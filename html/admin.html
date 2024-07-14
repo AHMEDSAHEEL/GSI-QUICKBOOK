@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="../css/admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Include Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore-compat.js"></script>
+</head>
+<body>
+    <div id="admin-container">
+        <h1>Admin Panel</h1>
+        <div id="admin-actions">
+            <button onclick="logout()">Logout</button>
+            <button onclick="viewUsers()">View Users</button>
+            <!-- Add more admin actions here -->
+        </div>
+        <div id="user-list" style="display: none;">
+            <h2>Registered Users</h2>
+            <ul id="users"></ul>
+        </div>
+    </div>
+
+    <!-- Delete User Modal -->
+    <!-- <div id="delete-user-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeDeleteUserModal()">&times;</span>
+            <p>Are you sure you want to delete this user?</p>
+            <div>
+                <button type="button" onclick="deleteUser()">Delete</button>
+                <button type="button" onclick="closeDeleteUserModal()">Cancel</button>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- Include your custom JavaScript file -->
+    <script src="../js/admin.js"></script>
+</body>
+</html>

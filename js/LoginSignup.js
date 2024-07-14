@@ -56,25 +56,35 @@ function validateLoginForm(event) {
     auth.signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
             // Signed in successfully
-            spinner.style.display = 'none';
-            successMessage.textContent = 'Login Successfully ✅';
-            successMessage.classList.add('success-message');
-            window.location.href = "../html/profile.html"; // Redirect to dashboard or desired page
-
-            // Clear input fields
-            document.getElementById('login-email').value = '';
-            document.getElementById('login-password').value = '';
-
-            // Reset success message after 3 seconds
-            setTimeout(() => {
-                successMessage.classList.remove('success-message');
-                successMessage.textContent = '';
-            }, 3000);
+            const user = userCredential.user;
+            // Check if user is admin
+            checkAdmin(user);
         })
         .catch((error) => {
             spinner.style.display = 'none';
             passErr.textContent = 'Incorrect email or password.';
         });
+}
+
+// Function to check if user is admin
+function checkAdmin(user) {
+    if (user) {
+        // Fetch user data to verify if admin
+        db.collection('users').doc(user.uid).get()
+            .then(doc => {
+                const userData = doc.data();
+                if (userData.isAdmin) {
+                    // If admin, redirect to admin.html
+                    window.location.href = "../html/admin.html";
+                } else {
+                    // If not admin, redirect to profile.html or any other page for regular users
+                    window.location.href = "../html/profile.html";
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching user data:', error);
+            });
+    }
 }
 
 // Function to validate signup form
@@ -134,7 +144,8 @@ function validateSignupForm(event) {
                 username,
                 email,
                 phone,
-                gender
+                gender,
+                isAdmin: false
             });
         })
         .then(() => {
