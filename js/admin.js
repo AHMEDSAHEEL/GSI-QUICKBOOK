@@ -62,17 +62,22 @@ function uploadProfilePicture(event) {
     const user = auth.currentUser;
 
     if (file && user) {
+        const loadingSpinner = document.getElementById('loading-spinner');
+        loadingSpinner.style.display = 'block';
+
         const storageRef = storage.ref();
         const profilePicRef = storageRef.child(`profilePictures/${user.uid}`);
 
         profilePicRef.put(file).then(snapshot => {
             snapshot.ref.getDownloadURL().then(downloadURL => {
                 document.getElementById('profile-picture').src = downloadURL;
+                loadingSpinner.style.display = 'none';
                 return db.collection('users').doc(user.uid).update({
                     profilePicture: downloadURL
                 });
             });
         }).catch(error => {
+            loadingSpinner.style.display = 'none';
             console.error('Error uploading profile picture:', error);
         });
     }
