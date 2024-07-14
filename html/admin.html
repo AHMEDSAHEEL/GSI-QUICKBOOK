@@ -6,15 +6,39 @@
     <title>Admin Panel</title>
     <link rel="stylesheet" href="../css/admin.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
-    <!-- Include Firebase SDKs -->
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-storage.js"></script>
+    <!-- Include Firebase SDKs -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore-compat.js"></script> -->
 </head>
 <body>
+    <main class="profile-container">
+        <section class="profile-card">
+            <div class="profile-header">
+                <img id="profile-picture" src="" alt="Profile Picture">
+                <input type="file" id="upload-profile-picture" accept="image/*" style="display: none;">
+                <button onclick="document.getElementById('upload-profile-picture').click();">Change Picture</button>
+            </div>
+            <div class="profile-details">
+                <h2 id="profile-username">Username: loading...</h2>
+                <p id="profile-email">Email: loading...</p>
+                <p id="profile-phone">Phone: loading...</p>
+                <p id="profile-gender">Gender: loading...</p>
+            </div>
+            <button id="logout-button" onclick="logout()">Logout</button>
+        </section>
+    </main>
     <div id="admin-container">
+        <section class="profile-card">
         <h1>Admin Panel</h1>
+        <h4 id="welcomeAdmin">loading...</h4>
         <div id="admin-actions">
             <button onclick="logout()">Logout</button>
             <button onclick="viewUsers()">View Users</button>
@@ -24,6 +48,7 @@
             <h2>Registered Users</h2>
             <ul id="users"></ul>
         </div>
+        </section>
     </div>
 
     <!-- Delete User Modal -->
@@ -39,6 +64,7 @@
     </div> -->
 
     <!-- Include your custom JavaScript file -->
+    <script src="../js/profile.js"></script>
     <script src="../js/admin.js"></script>
 </body>
 </html>
