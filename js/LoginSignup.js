@@ -180,33 +180,13 @@ let appVerifier;
 function sendOTP() {
     const phoneNumber = document.getElementById('signup-phone').value;
 
-    // if (!appVerifier) {
-    //     appVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
-    // } else {
-    //     appVerifier.clear();
-    //     appVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
-    // }
-    // document.getElementById('recaptcha-container').style.display = 'block';
-    if (appVerifier) {
+    if (!appVerifier) {
+        appVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+    } else {
         appVerifier.clear();
+        appVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
     }
-
-    // Initialize reCAPTCHA verifier
-    appVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
-        'size': 'invisible',
-        'callback': (response) => {
-            // reCAPTCHA solved - proceed with sendOTP
-            console.log('reCAPTCHA solved');
-        },
-        'expired-callback': () => {
-            // Handle expired reCAPTCHA
-            console.log('reCAPTCHA expired');
-        }
-    });
-
-    // Make the reCAPTCHA container visible (optional, for debugging purposes)
     document.getElementById('recaptcha-container').style.display = 'block';
-
 
     auth.signInWithPhoneNumber(phoneNumber, appVerifier)
         .then((confirmationResult) => {
