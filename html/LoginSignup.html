@@ -101,14 +101,15 @@
                         </select>
                     </div>
                    
-                    <div class="input-container">
+                    <div class="input-container" style="display: flex; flex-direction: row;">
                         
-                        <input type="tel" id="signup-phone" maxlength="15"  required>
+                        <input type="tel" id="signup-phone" maxlength="15" style="width: 100%;"  required>
+                        <button type="button" id="sendOT" onclick="sendOTP()" style="margin-top: 0px; margin-left: 10px; height: 40px;">Send OTP</button>
                     </div>
                     <div class="error error-4" id="sign-phoneErr"></div>
-                    <button type="button" id="sendOT" onclick="sendOTP()" >Send OTP</button>
+                    
                     <div id="recaptcha-container"></div>
-                    <div id="otp-section" style="display: none; margin-top: 10px;"  >
+                    <div id="otp-section" style=" margin-top: 10px;"  >
                         <input type="text" id="signup-otp" placeholder="Enter OTP" required>
                         <button type="button" onclick="verifyOTP()">Verify OTP</button>
                     </div>
