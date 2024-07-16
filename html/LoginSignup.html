@@ -5,18 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login & Signup</title>
     <link rel="stylesheet" href="../css/LoginSignup.css">
-    
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Faster+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore-compat.js"></script>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/css/intlTelInput.css" />
-
     <style>
         .dialog {
             position: fixed;
@@ -29,19 +25,15 @@
             z-index: 1000;
             display: none;
         }
-
         .dialog button {
             display: block;
             margin: 10px auto;
         }
-
         .success-message {
-    color: green; /* Example styling */
-    font-size: 14px;
-    margin-top: 10px;
-}
-
-
+            color: green;
+            font-size: 14px;
+            margin-top: 10px;
+        }
         .error {
             color: red;
         }
@@ -62,14 +54,12 @@
                     <div class="input-container">
                         <i class="fas fa-lock"></i>
                         <input type="password" id="login-password" placeholder="Password" required>
-                        <i class="far fa-eye" id="toggle-login-password"  onclick="togglePasswordVisibility('login-password', 'toggle-login-password')"></i>
+                        <i class="far fa-eye" id="toggle-login-password" onclick="togglePasswordVisibility('login-password', 'toggle-login-password')"></i>
                     </div>
                     <div class="error" id="passErr"></div>
                     <div class="spinner" id="login-spinner"></div> 
                     <button type="submit">Login</button>
                     <span id="Forgot-pass" onclick="showForgotPassword()">Forgot Password?</span>
-                   
-
                     <p> Don't have an Account? <span style="color: red;" onclick="showSignup()">Sign Up</span></p>
                 </form>
 
@@ -102,21 +92,17 @@
                             <option value="other">other</option>
                         </select>
                     </div>
-                   
                     <div class="input-container" style="display: flex; flex-direction: row;">
-                        
                         <input type="tel" id="signup-phone" maxlength="15" style="width: 100%;"  required>
                         <button type="button" id="sendOT" onclick="sendOTP()" style="margin-top: 0px; margin-left: 10px; height: 40px;">Send OTP</button>
                     </div>
                     <div class="error error-4" id="sign-phoneErr"></div>
-                    
                     <div id="recaptcha-container"></div>
-                    <div id="otp-section" style="display: none; margin-top: 10px;"  >
+                    <div id="otp-section" style="display: none; margin-top: 10px;">
                         <input type="text" id="signup-otp" placeholder="Enter OTP" required>
                         <button type="button" onclick="verifyOTP()">Verify OTP</button>
                     </div>
                     <div class="error error-5" id="sign-otpErr"></div>
-                    
                     <div class="spinner" id="signup-spinner"></div> 
                     <button type="submit">Signup</button>
                     <p>&nbsp; Already have Account? <span style="color: red;" onclick="showLogin()">Login</span></p>
@@ -125,12 +111,10 @@
         </section>
     </main>
 
-    <!-- Forgot Password Dialog Box -->
     <div id="forgot-password-dialog" class="dialog">
         <form id="forgot-password-form" onsubmit="resetPassword(event)">
             <h2>Reset Password</h2>
-
-            <h2 id="showSuccessMsg" style="color: green;">Sent succesfully</h2>
+            <h2 id="showSuccessMsg" style="color: green;">Sent successfully</h2>
             <input type="email" id="reset-email" placeholder="Enter your email" style="border: 0.2px solid rgb(7, 7, 7);" required>
             <div class="error" id="reset-emailErr"></div>
             <button type="submit">Send</button>
@@ -142,27 +126,24 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/intlTelInput.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/utils.js"></script>
-  
     <script>
-    const phoneInputField = document.querySelector("#signup-phone");
-    const phoneInput = window.intlTelInput(phoneInputField, {
-        initialCountry: "auto",
-        geoIpLookup: function(callback) {
-            fetch('https://ipapi.co/json/')
-                .then(response => response.json())
-                .then(data => callback(data.country_code.toLowerCase()))
-                .catch(() => callback('us'));
-        },
-        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/utils.js"
-    });
+        const phoneInputField = document.querySelector("#signup-phone");
+        const phoneInput = window.intlTelInput(phoneInputField, {
+            initialCountry: "auto",
+            geoIpLookup: function(callback) {
+                fetch('https://ipapi.co/json/')
+                    .then(response => response.json())
+                    .then(data => callback(data.country_code.toLowerCase()))
+                    .catch(() => callback('us'));
+            },
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/utils.js"
+        });
 
-    // Add event listener to format the phone number with country code
-    phoneInputField.addEventListener('countrychange', function() {
-        const selectedCountryData = phoneInput.getSelectedCountryData();
-        phoneInputField.value = "+" + selectedCountryData.dialCode;
-    });
+        phoneInputField.addEventListener('countrychange', function() {
+            const selectedCountryData = phoneInput.getSelectedCountryData();
+            phoneInputField.value = "+" + selectedCountryData.dialCode;
+        });
     </script>
-      
-      <script src="../js/LoginSignup.js"></script>
+    <script src="../js/LoginSignup.js"></script>
 </body>
 </html>

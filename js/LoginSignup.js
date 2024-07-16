@@ -176,7 +176,6 @@ function validateSignupForm(event) {
 }
 let appVerifier;
 
-// Function to send OTP
 function sendOTP() {
     const phoneNumber = document.getElementById('signup-phone').value;
 
@@ -186,46 +185,41 @@ function sendOTP() {
         appVerifier.clear();
         appVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
     }
+
     document.getElementById('recaptcha-container').style.display = 'block';
 
-    auth.signInWithPhoneNumber(phoneNumber, appVerifier)
+    firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
         .then((confirmationResult) => {
-            // OTP sent successfully
             window.confirmationResult = confirmationResult;
             document.getElementById('otp-section').style.display = 'block';
             document.getElementById('recaptcha-container').style.display = 'none';
-            
         })
         .catch((error) => {
-            // Handle error
             console.error('Error sending OTP:', error);
             alert('Error sending OTP. Please try again later.');
         });
 }
 
-// Function to verify OTP
 function verifyOTP() {
     const otp = document.getElementById('signup-otp').value;
     const confirmationResult = window.confirmationResult;
+
     document.getElementById('recaptcha-container').style.display = 'none';
+
     confirmationResult.confirm(otp)
         .then((result) => {
-            // OTP verification successful
             const user = result.user;
-            // Proceed with creating user document in Firestore, etc.
             document.getElementById('otp-section').style.display = 'none';
             document.getElementById('recaptcha-container').style.display = 'none';
-            document.getElementById('sendOT').style.display='none';
-            alert('verify successfully')
+            document.getElementById('sendOT').style.display = 'none';
+            alert('Verified successfully');
         })
         .catch((error) => {
-            // Handle OTP verification error
             console.error('Error verifying OTP:', error);
             alert('Invalid OTP. Please enter the correct OTP.');
         });
 }
 
-// Function to validate password complexity
 function validatePasswordComplexity(password) {
     const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!.@#$%^&*()])[A-Za-z\d!.@#$%^&*()]{8,}$/;
     return re.test(password);
