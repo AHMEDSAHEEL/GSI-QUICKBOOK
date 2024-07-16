@@ -9,7 +9,6 @@ body {
     width: 100%;
     margin: auto;
     overflow: hidden;
-    
 }
 
 header {
@@ -20,7 +19,7 @@ header {
 
 header h1 {
     text-align: center;
-    margin: 0;
+    margin: 1rem;
     font-size: 24px;
 }
 
@@ -80,8 +79,6 @@ section h2 {
     height: 100%; /* Full height */
     background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
     padding-top: 60px;
-  
-    
 }
 
 .modal-content {
@@ -92,11 +89,8 @@ section h2 {
     width: 100%;
     border-radius: 5px;
     margin: 10px auto;
-   
     /* Center horizontally */
 }
-
-
 
 .modal-footer {
     text-align: center;
@@ -112,8 +106,7 @@ section h2 {
 }
 
 #updateBtn {
-    
-    background-color:green;
+    background-color: green;
     border: 0;
     outline: 0;
     float: left;
@@ -124,8 +117,7 @@ section h2 {
 }
 
 #clearBtn {
-    
-    background-color:red;
+    background-color: red;
     float: right;
     color: white;
     border: 0;
@@ -166,26 +158,47 @@ section h2 {
     section {
         width: 80%;
     }
- 
 }
+
 @media screen and (max-width: 675px) {
-   
     .modal-content {
         max-width: 350px;
-        
     }
 }
+
 @media screen and (max-width: 495px) {
-   
     .modal-content {
         max-width: 200px;
-        
     }
 }
+
 @media screen and (max-width: 325px) {
-   
     .modal-content {
         max-width: 150px;
-        
     }
+}
+
+.spinner {
+    display: none;
+    
+    margin: 0 auto;
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top: 4px solid #3498db;
+    width: 30px;
+    height: 30px;
+    -webkit-animation: spin 1s linear infinite; 
+    animation: spin 1s linear infinite;
+}
+
+
+
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

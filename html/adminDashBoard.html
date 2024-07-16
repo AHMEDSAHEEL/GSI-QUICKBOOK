@@ -5,15 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuickBooks Dashboard</title>
     <link rel="stylesheet" href="../css/dashBoard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
     <div class="container">
         <header>
             <h1>QuickBooks Dashboard</h1>
+            <div class="spinner"></div> 
         </header>
         <main>
-            <section class="summary">
-                <h2 >Summary</h2>
+            <section class="summary" id="sum">
+                <h2>Summary</h2>
                 <div class="card hidden" id="profit-loss-card">
                     <h3>Profit and Loss</h3>
                     <p>Total Income: <span id="total-income">₹10,000</span></p>
@@ -24,10 +29,15 @@
                     <h3>Balance Sheet</h3>
                     <p>Assets: <span id="assets">₹20,000</span></p>
                     <p>Liabilities: <span id="liabilities">₹10,000</span></p>
+                   
                     <p>Equity: <span id="equity">₹10,000</span></p>
                 </div>
+                <div class="card hidden" id="summary-chart-card">
+                    <h3>Summary Chart</h3>
+                    <canvas id="summary-chart-0"></canvas>
+                </div>
             </section>
-            <section class="sales">
+            <section class="sales" id="sum">
                 <h2>Sales</h2>
                 <div class="card hidden" id="invoices-card">
                     <h3>Invoices</h3>
@@ -38,11 +48,15 @@
                     <h3>Sales Overview</h3>
                     <p>Total Sales: <span id="total-sales">₹10,000</span></p>
                     <p>Open Invoices: <span id="open-invoices">₹2,000</span></p>
+                   
                     <p>Overdue Invoices: <span id="overdue-invoices">₹500</span></p>
-                    
+                </div>
+                <div class="card hidden" id="summary-chart-card">
+                    <h3>Sales Chart</h3>
+                    <canvas id="summary-chart-1"></canvas>
                 </div>
             </section>
-            <section class="expenses">
+            <section class="expenses" id="sum">
                 <h2>Expenses</h2>
                 <div class="card hidden" id="expenses-overview-card">
                     <h3>Expense Overview</h3>
@@ -52,24 +66,25 @@
                 <div class="card hidden" id="bills-card">
                     <h3>Bills</h3>
                     <p>Outstanding: <span id="outstanding-bills">₹1,000</span></p>
+                   
                     <p>Paid: <span id="paid-bills">₹4,000</span></p>
+                </div>
+                <div class="card hidden" id="summary-chart-card">
+                    <h3>Expenses Chart</h3>
+                    <canvas id="summary-chart-2"></canvas>
                 </div>
             </section>
         </main>
     </div>
 
-  <!-- for update the value (admin use ) -->
+    <!-- Modal for updating values -->
     <div id="myModal" class="modal">
         <div class="modal-content" id="modal-form">
             <span class="close-btn">&times;</span>
             <h3 id="modal-title">Update Data</h3>
-
-            <!--here form will create in js-->
-
         </div>
-      
     </div>
 
-    <script src="../js/dashBoard.js"></script>
+    <script src="../js/adminDaashBoard.js"></script>
 </body>
 </html>

@@ -59,3 +59,18 @@ body {
     border-radius: 5px;
     margin-top: 20px;
 }
+#DashBoard-button {
+    background:rgb(105, 168, 3);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+#DashBoard-button:hover{
+    background:rgb(154, 222, 51);
+}
+#logout-button:hover {
+    background: #e55d53;
+}

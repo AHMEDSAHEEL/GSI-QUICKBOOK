@@ -140,14 +140,14 @@ function viewUsers() {
             const user = doc.data();
             
            
-           // if(!user.isAdmin){
+            if(!user.isAdmin){
             const li = document.createElement('li');
             li.textContent = `${user.username} - ${user.email}`;
             
             li.setAttribute('data-user-id', doc.id); // Store user ID as data attribute
             //li.addEventListener('click', () => openDeleteUserModal(doc.id)); // Add click listener for delete confirmation
             usersUl.appendChild(li);
-            //}
+            }
         });
         userList.style.display = 'block';
     }).catch(error => {
