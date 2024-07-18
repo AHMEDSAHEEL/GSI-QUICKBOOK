@@ -174,36 +174,14 @@ function validateSignupForm(event) {
             alert(`Error: ${error.message}`);
         });
 }
-
-
 let appVerifier;
 
 function sendOTP() {
-    const phoneNumber = document.getElementById('signup-phone').value.trim();
+    const phoneNumber = document.getElementById('signup-phone').value;
 
-    if (!phoneNumber) {
-        alert('Please enter your phone number.');
-        return;
-    }
 
-    // Initialize reCAPTCHA verifier
-    if (!appVerifier) {
-        appVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
-            size: 'invisible',
-            callback: function(response) {
-                console.log('reCAPTCHA solved, sending OTP...');
-            }
-        });
-    } else {
-        appVerifier.clear();
-        appVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
-            size: 'invisible',
-            callback: function(response) {
-                console.log('reCAPTCHA solved, sending OTP...');
-            }
-        });
-    }
-
+        appVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+    
     document.getElementById('recaptcha-container').style.display = 'block';
 
     firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
@@ -219,13 +197,8 @@ function sendOTP() {
 }
 
 function verifyOTP() {
-    const otp = document.getElementById('signup-otp').value.trim();
+    const otp = document.getElementById('signup-otp').value;
     const confirmationResult = window.confirmationResult;
-
-    if (!otp) {
-        alert('Please enter the OTP.');
-        return;
-    }
 
     document.getElementById('recaptcha-container').style.display = 'none';
 
