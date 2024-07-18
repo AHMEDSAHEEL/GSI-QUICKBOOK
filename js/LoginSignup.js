@@ -179,9 +179,13 @@ let appVerifier;
 function sendOTP() {
     const phoneNumber = document.getElementById('signup-phone').value;
 
-
+    if (!appVerifier) {
         appVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
-    
+    } else {
+        appVerifier.clear();
+        appVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+    }
+
     document.getElementById('recaptcha-container').style.display = 'block';
 
     firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
