@@ -174,16 +174,34 @@ function validateSignupForm(event) {
             alert(`Error: ${error.message}`);
         });
 }
+
+
 let appVerifier;
 
 function sendOTP() {
-    const phoneNumber = document.getElementById('signup-phone').value;
+    const phoneNumber = document.getElementById('signup-phone').value.trim();
 
+    if (!phoneNumber) {
+        alert('Please enter your phone number.');
+        return;
+    }
+
+    // Initialize reCAPTCHA verifier
     if (!appVerifier) {
-        appVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+        appVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+            size: 'invisible',
+            callback: function(response) {
+                console.log('reCAPTCHA solved, sending OTP...');
+            }
+        });
     } else {
         appVerifier.clear();
-        appVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+        appVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+            size: 'invisible',
+            callback: function(response) {
+                console.log('reCAPTCHA solved, sending OTP...');
+            }
+        });
     }
 
     document.getElementById('recaptcha-container').style.display = 'block';
@@ -201,8 +219,13 @@ function sendOTP() {
 }
 
 function verifyOTP() {
-    const otp = document.getElementById('signup-otp').value;
+    const otp = document.getElementById('signup-otp').value.trim();
     const confirmationResult = window.confirmationResult;
+
+    if (!otp) {
+        alert('Please enter the OTP.');
+        return;
+    }
 
     document.getElementById('recaptcha-container').style.display = 'none';
 
