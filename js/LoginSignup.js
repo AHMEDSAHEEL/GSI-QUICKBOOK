@@ -166,7 +166,7 @@ function validateSignupForm(event) {
             setTimeout(() => {
                 successMessage.classList.remove('success-message');
                 successMessage.textContent = '';
-                showLogin();
+                window.location.reload();
             }, 3000);
         })
         .catch((error) => {
