@@ -1,23 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
 body {
-    font-family: 'Roboto', 'Nunito', 'Arial', sans-serif;
+    
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    
-    background-image: linear-gradient(rgba(9, 0, 77, 0.65), rgba(9, 0, 77, 0.65));
-    background-size: cover;
-    background-position: center;
+   
+
+     background-image: linear-gradient(rgba(202, 219, 140, 0.65), rgba(194, 44, 111, 0.65)); 
 }
 
 .main-container {
     /* background-image: linear-gradient(rgba(110, 104, 152, 0.65), rgba(147, 143, 184, 0.65)), url(images/background.png); */
-    background-size: cover;
-    background-position: center;
+    background-image:url(../images/container1.png);
+    
     padding: 2rem;
     border-radius: 8px;
-    /* box-shadow: 0 0 20px rgb(48, 37, 60); */
+    box-shadow: 0 0 15px rgb(48, 37, 60);
     overflow: hidden;
     width: 320px;
     max-width: 100%;
@@ -55,6 +55,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 }
 #login-form h1 {
     margin-bottom: 2rem;
@@ -62,16 +63,18 @@ body {
 }
 form h1 {
     font-size: 2.5rem;
-    font-family: 'Faster One';
+    
     color: rgba(15, 5, 92, 0.664)
 }
 
 .input-container {
     position: relative;
-    
+    /* background: rgb(216, 216, 216); */
     width: 100%;
     margin-bottom: 1rem;
     margin-top: 1rem;
+
+    border-radius: 0.3rem;
 }
 
 .input-container i {
@@ -119,7 +122,6 @@ form button {
     border-radius: 4px;
     cursor: pointer;
     transition: background 0.3s;
-    font-family: 'Creepster';
     letter-spacing: 0.1em;
     font-size: 1.1em;
 }

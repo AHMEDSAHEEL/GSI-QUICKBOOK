@@ -4,8 +4,9 @@ body {
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    background:url(../images/HomeAdmin.png);
-    background-color: #2e015c;;
+    background: linear-gradient(rgba(202, 219, 140, 0.65), rgba(194, 44, 111, 0.65)); 
+    height: 100%;
+    min-height: 100vh;
     
 }
 
@@ -18,7 +19,7 @@ body {
 }
 
 .profile-card {
-    background-image: linear-gradient(rgba(126, 119, 177, 0.65), rgba(122, 115, 181, 0.65));
+    background-image:url(../images/container1.png);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     padding: 20px;
