@@ -37,6 +37,12 @@
         .error {
             color: red;
         }
+        .suggestion {
+                     display: none;
+                        font-size: 0.8rem;
+                        color: #888;
+                        margin: 0;
+                    }
     </style>
 </head>
 <body>
@@ -69,8 +75,10 @@
                     <h1>Signup</h1>
                     <div class="input-container">
                         <i class="fas fa-user"></i>
-                        <input type="text" id="signup-username" placeholder="Username" required>
+                        <input type="text" id="signup-username" placeholder="Username" required minlength="6" onfocus="showSuggestion('username-suggestion')" onblur="hideSuggestion('username-suggestion')" oninput="validateUsername()">
+                       
                     </div>
+                    <small style="align-items:start;margin-right: 3rem;" id="username-suggestion" class="suggestion">Username must be at least 6 characters long</small>
                     <div class="error error-1" id="sign-userErr"></div>
                     <div class="input-container">
                         <i class="fas fa-envelope"></i>
@@ -79,22 +87,24 @@
                     <div class="error error-2" id="sign-emailErr"></div>
                     <div class="input-container">
                         <i class="fas fa-lock"></i>
-                        <input type="password" id="signup-password" placeholder="Password" required>
+                        <input type="password" id="signup-password" placeholder="Password" required minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" onfocus="showSuggestion('password-suggestion')" onblur="hideSuggestion('password-suggestion')"oninput="validatePassword()">
                         <i class="far fa-eye" id="toggle-login-password" style="margin-right: 0;" onclick="togglePasswordVisibility('signup-password', 'toggle-login-password')"></i>
-                    </div>
+                       </div>
+                    <small class="suggestion" id="password-suggestion">Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number</small>
+                    
                     <div class="error error-3" id="sign-passErr"></div>
                     <div class="input-container">
                         <label for="signup-gender" class="sr-only">Gender</label>
                         <i class="fas fa-venus-mars"></i>
                         <select style="font-family: 'Roboto', 'Nunito', 'Arial', sans-serif;" id="signup-gender" required>
                             <option value="" disabled selected>Select your gender</option>
-                            <option value="male">male</option>
-                            <option value="female">female</option>
-                            <option value="other">other</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
                         </select>
                     </div>
                     <div class="input-container" style="display: flex; flex-direction: row;">
-                        <input type="tel" id="signup-phone" maxlength="15" style="width: 100%;"  required>
+                        <input type="tel" id="signup-phone" maxlength="15" style="width: 100%;" required>
                         <button type="button" id="sendOT" onclick="sendOTP()" style="margin-top: 0px; margin-left: 10px; height: 40px;">Send OTP</button>
                     </div>
                     <div class="error error-4" id="sign-phoneErr"></div>
@@ -106,8 +116,10 @@
                     <div class="error error-5" id="sign-otpErr"></div>
                     <div class="spinner" id="signup-spinner"></div> 
                     <button type="submit">Signup</button>
-                    <p>&nbsp; Already have Account? <span style="color: red;" onclick="showLogin()">Login</span></p>
+                    <p>&nbsp; Already have an account? <span style="color: red;" onclick="showLogin()">Login</span></p>
                 </form>
+              
+                
             </div>
         </section>
     </main>

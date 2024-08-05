@@ -39,6 +39,7 @@ function validateLoginForm(event) {
 
     const spinner = document.getElementById('login-spinner');
     spinner.style.display = 'block';
+   
 
     if (!validateEmail(email)) {
         spinner.style.display = 'none';
@@ -295,5 +296,36 @@ function togglePasswordVisibility(inputId, toggleId) {
         input.type = "password";
         toggle.classList.remove("fa-eye-slash");
         toggle.classList.add("fa-eye");
+    }
+}
+var usernam = document.getElementById('signup-username').value;
+const passwor = document.getElementById('signup-password').value;
+
+function showSuggestion(id) {
+ 
+    document.getElementById(id).style.display = 'block';
+
+}
+function hideSuggestion(id) {
+    document.getElementById(id).style.display = 'none';
+}
+function validateUsername() {
+    const usernameInput = document.getElementById('signup-username');
+    const usernameSuggestion = document.getElementById('username-suggestion');
+    if (usernameInput.value.length >= 6) {
+        usernameSuggestion.style.display = 'none';
+    } else {
+        usernameSuggestion.style.display = 'block';
+    }
+}
+
+function validatePassword() {
+    const passwordInput = document.getElementById('signup-password');
+    const passwordSuggestion = document.getElementById('password-suggestion');
+    const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    if (passwordPattern.test(passwordInput.value)) {
+        passwordSuggestion.style.display = 'none';
+    } else {
+        passwordSuggestion.style.display = 'block';
     }
 }
