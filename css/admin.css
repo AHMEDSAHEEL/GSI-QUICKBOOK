@@ -1,7 +1,7 @@
 body {
     font-family: 'Roboto', sans-serif;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
     /* background: linear-gradient(rgba(202, 219, 140, 0.65), rgba(194, 44, 111, 0.65));  */

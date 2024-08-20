@@ -15,8 +15,21 @@ document.addEventListener('DOMContentLoaded', function () {
     const auth = firebase.auth();
     const db = firebase.firestore();
     // Initialize Firebase
+    
+    // const hamburger = document.querySelector('.hamburger');
+    // const closeBtn = document.querySelector('.close-btn');
+    // const sidebar = document.querySelector('.sidebar');
+    // const mainContent = document.querySelector('.main-content');
 
+    // hamburger.addEventListener('click', function () {
+    //     sidebar.classList.toggle('active');
+    //     mainContent.classList.toggle('active');
+    // });
 
+    // closeBtn.addEventListener('click', function () {
+    //     sidebar.classList.remove('active');
+    //     mainContent.classList.remove('active');
+    // });
     // Check if user is authenticated
     firebase.auth().onAuthStateChanged(async (user) => {
         if (user) {
