@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (user) {
             loadUserProfile(user.uid);
         } else {
-            window.location.href = '../html/LoginSignup.html';
+            window.location.href = '/index.html';
         }
     });
 
@@ -86,7 +86,7 @@ function uploadProfilePicture(event) {
 
 function logout() {
     auth.signOut().then(() => {
-        window.location.href = '../html/LoginSignup.html';
+        window.location.href = '/index.html';
     }).catch(error => {
         console.error('Error logging out:', error);
     });

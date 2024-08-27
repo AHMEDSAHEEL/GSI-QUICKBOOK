@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (user) {
             loadUserProfile(user.uid);
         } else {
-            window.location.href = '../html/LoginSignup.html';
+            window.location.href = '/index.html';
         }
     });
 
@@ -85,7 +85,7 @@ function uploadProfilePicture(event) {
 
 function logout() {
     auth.signOut().then(() => {
-        window.location.href = '../html/LoginSignup.html';
+        window.location.href = '/index.html';
     }).catch(error => {
         console.error('Error logging out:', error);
     });
@@ -104,18 +104,18 @@ auth.onAuthStateChanged(user => {
                     // Non-admin user should not access admin panel
                     alert('Access denied!');
                     auth.signOut();
-                    window.location.href = "../html/LoginSignup.html";
+                    window.location.href = "/index.html";
                 }
             } else {
                 // Handle case where user document doesn't exist
                 console.error('User document does not exist');
                 auth.signOut();
-                window.location.href = "../html/LoginSignup.html";
+                window.location.href = "/index.html";
             }
         }).catch(error => {
             console.error('Error fetching user data:', error);
             auth.signOut();
-            window.location.href = "../html/LoginSignup.html";
+            window.location.href = "/index.html";
         });
     } else {
         // Redirect to authentication page if no user is logged in
@@ -125,7 +125,7 @@ auth.onAuthStateChanged(user => {
 
 function logout() {
     auth.signOut().then(() => {
-        window.location.href = "../html/LoginSignup.html";
+        window.location.href = "/index.html";
     }).catch(error => {
         console.error('Error logging out:', error);
     });
