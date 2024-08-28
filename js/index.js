@@ -239,12 +239,12 @@ function validateEmail(email) {
 // }
 
 // Timeout function for success messages
-function timeoutSuccessMessage(element) {
-    setTimeout(() => {
-        element.classList.remove('success-message');
-        element.textContent = '';
-    }, 3000);
-}
+// function timeoutSuccessMessage(element) {
+//     setTimeout(() => {
+//         element.classList.remove('success-message');
+//         element.textContent = '';
+//     }, 3000);
+// }
 
 // Show the forgot password dialog
 function showForgotPassword() {
@@ -266,6 +266,7 @@ function resetPassword(event) {
     emailErr.textContent = '';
     spinner.style.display = 'block';
     successMsg.textContent = '';
+    successMsg.style.display='block';
 
     if (!validateEmail(email)) {
         emailErr.textContent = 'Enter Valid Email';
@@ -275,15 +276,25 @@ function resetPassword(event) {
 
     // Send password reset email
     auth.sendPasswordResetEmail(email)
-        .then(() => {
-            spinner.style.display = 'none';
-            successMsg.textContent = 'Password reset email sent successfully.';
-            timeoutSuccessMessage(successMsg);
-        })
-        .catch((error) => {
-            spinner.style.display = 'none';
-            emailErr.textContent = 'Error: ' + error.message;
-        });
+    .then(() => {
+        spinner.style.display = 'none';
+        successMsg.textContent = 'Password reset email sent successfully.';
+        //timeoutSuccessMessage(successMsg);
+        
+        // Add a timeout before hiding the dialog
+        setTimeout(() => {
+            document.getElementById('forgot-password-dialog').style.display = 'none';
+           successMsg.style.display='none';
+        }, 1000); 
+        
+         
+    })
+    .catch((error) => {
+        spinner.style.display = 'none';
+        emailErr.textContent = 'Error: ' + error.message;
+    });
+  
+
 }
 function togglePasswordVisibility(inputId, toggleId) {
     const input = document.getElementById(inputId);
