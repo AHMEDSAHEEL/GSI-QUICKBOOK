@@ -76,10 +76,10 @@ function checkAdmin(user) {
                 const userData = doc.data();
                 if (userData.isAdmin) {
                     // If admin, redirect to admin.html
-                    window.location.href = "../html/admin.html";
+                    window.location.href = "html/admin.html";
                 } else {
                     // If not admin, redirect to profile.html or any other page for regular users
-                    window.location.href = "../html/profile.html";
+                    window.location.href = "html/profile.html";
                 }
             })
             .catch(error => {
