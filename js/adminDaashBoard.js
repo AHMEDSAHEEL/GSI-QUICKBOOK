@@ -14,22 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
     const db = firebase.firestore();
-    // Initialize Firebase
-    
-    // const hamburger = document.querySelector('.hamburger');
-    // const closeBtn = document.querySelector('.close-btn');
-    // const sidebar = document.querySelector('.sidebar');
-    // const mainContent = document.querySelector('.main-content');
 
-    // hamburger.addEventListener('click', function () {
-    //     sidebar.classList.toggle('active');
-    //     mainContent.classList.toggle('active');
-    // });
-
-    // closeBtn.addEventListener('click', function () {
-    //     sidebar.classList.remove('active');
-    //     mainContent.classList.remove('active');
-    // });
     // Check if user is authenticated
     firebase.auth().onAuthStateChanged(async (user) => {
         if (user) {
@@ -391,25 +376,30 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 updateBtn.addEventListener('click', function () {
                     if (isAdmin) {
+                        const updateData = {};
+                        
                         items.forEach((item, index) => {
                             const span = item.querySelector('span');
                             const input = document.getElementById(`modal-input-${index}`);
                             const formattedValue = '₹' + input.value.trim();
                             span.textContent = formattedValue;
                             localStorage.setItem(span.id, formattedValue);
+                            
+                            // Prepare data for Firestore
+                            updateData[span.id] = formattedValue;
+                            console.log(updateData[span.id]);
                         });
-
+                
                         // Update Firestore if isAdmin
-                        const updateData = {};
-                        items.forEach((item, index) => {
-                            const spanId = item.querySelector('span').id;
-                            updateData[spanId] = localStorage.getItem(spanId);
+                        db.collection('dashboard').doc(card.id).set(updateData, { merge: true })
+                        .then(() => {
+                            console.log("Document successfully updated!");
+                        })
+                        .catch((error) => {
+                            console.error("Error updating document: ", error);
                         });
-
-                        // db.collection('users').doc('yourDocument').update(updateData)
-                        //     .then(() => {
-                        //         console.log('Document successfully updated in Firestore');
-                        // Update respective chart based on card ID
+                
+                        // Update charts based on the card id
                         const cl = card.id;
                         if (cl === 'profit-loss-card' || cl === 'balance-sheet-card') {
                             updateSummaryChart();
@@ -418,17 +408,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         } else {
                             updateSummaryChart2();
                         }
-                        // })
-                        // .catch((error) => {
-                        //     console.error('Error updating document: ', error);
-                        // });
-                        // } else {
-                        //     // Show message or restrict access if not isAdmin
-                        //     alert('You do not have permission to modify data.');
-                        // }
                     }
                     modal.style.display = 'none';
                 });
+                
 
                 clearBtn.addEventListener('click', function () {
                     items.forEach((item, index) => {
